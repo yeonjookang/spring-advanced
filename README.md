@@ -17,3 +17,9 @@
     - 둘 다 xToMany 관계에서 페이징이 되지 않는다.
       - Spring Data JPA의 Pageable은 내부적으로 SQL의 LIMIT / OFFSET을 사용해 페이징한다.
       - 즉, row 수를 기준으로 페이징하는데, xToMany 관계에서는 연관된 필드로 인해 row가 늘어나기 때문에, 페이징이 정상적으로 작동하지 않는다.
+### Lv3. 테스트코드 연습
+- [x] manager_목록_조회_시_Todo가_없다면_NPE_에러를_던진다() -> 테스트 코드와 테스트 코드 메서드명 수정
+- [x] comment_등록_중_할일을_찾지_못해_에러가_발생한다() -> 테스트 코드 수정 
+- [x] todo의_user가_null인_경우_예외가_발생한다() -> 서비스 로직 수정
+  - ReflectionTestUtils.setField 메서드: todo 객체 안에 있는 private 필드 user를 강제로 null로 만들어 준다.
+  - ObjectUtils.nullSafeEquals 메서드: a 또는 b가 null이어도 NullPointerException 없이 비교 가능
