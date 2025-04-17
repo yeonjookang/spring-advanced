@@ -14,6 +14,7 @@ import org.example.expert.domain.user.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +49,7 @@ public class TodoService {
         );
     }
 
+    @EntityGraph(attributePaths = {"user"})
     public Page<TodoResponse> getTodos(int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
@@ -64,6 +66,7 @@ public class TodoService {
         ));
     }
 
+    @EntityGraph(attributePaths = {"user"})
     public TodoResponse getTodo(long todoId) {
         Todo todo = todoRepository.findByIdWithUser(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
