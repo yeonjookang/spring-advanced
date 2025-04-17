@@ -3,4 +3,4 @@
 ### Lv1. 코드 개선
 - [x] Early Return
 - [x] 불필요한 if-else 피하기
-- [ ] Validation
+- [x] Validation
